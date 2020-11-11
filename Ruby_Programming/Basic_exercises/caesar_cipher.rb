@@ -2,18 +2,20 @@
 
 def caesar_cipher(string, skip)
   a = Array("a".."z")
-  arr = string.split("")
-  new_arr = []
+  a_caps = Array("A".."Z")
   l = a.length
-  arr.each do |e|
-    if a.include?(e.downcase)
-      i = a.index(e.downcase)
-      a[i + skip] == nil ? new_arr << a[skip - (l - i)] : new_arr << a[i + skip]
+  new_arr = string.split("").map do |element|
+    if a.include?(element)
+      i = a.index(element)
+      a[i + skip] == nil ? a[skip - (l - i)] : a[i + skip]
+    elsif a_caps.include?(element)
+      i = a_caps.index(element)
+      a_caps[i + skip] == nil ? a_caps[skip - (l - i)] : a_caps[i + skip]
     else
-      new_arr << e
+      element
     end
   end
-  new_arr.join("").capitalize
+  new_arr.join("")
 end
 
 p caesar_cipher("What a string!", 5)
