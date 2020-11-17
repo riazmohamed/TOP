@@ -6,13 +6,14 @@ class GoodDog
   end
 
   def details
-    puts "Name: #{@name}, Age: #{@age}."
+    puts "Name: #{self.name}, Age: #{self.age}."
   end
 end
 
 sparky = GoodDog.new("Sparky", 4)
 fido = GoodDog.new("Fido", 6)
 spot = GoodDog.new("Spot", 10)
+sparky.name = "Mr Cool"
 sparky.details
 fido.details
 spot.details
