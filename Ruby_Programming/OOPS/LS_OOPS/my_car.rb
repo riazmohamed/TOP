@@ -53,6 +53,7 @@ class MyTruck < Vehicle
   end
 end
 
+puts "---Car details---"
 car = MyCar.new(2018, 'MAZDA 6', 'red')
 car.speed_up(70)
 car.brake(50)
@@ -66,6 +67,18 @@ new_color = "blue"
 car.spray_paint(new_color)
 MyCar.calulate_milleage(13, 400)
 p car.vehicle_type
+puts "---Truck details---"
 
 truck = MyTruck.new(2019, 'VW', 'white')
+truck.speed_up(70)
+truck.brake(50)
+truck.current_speed
+truck.shut_off
+puts truck.color
+truck.color = "black"
+puts truck.color
+puts truck.year
+new_color = "Red"
+truck.spray_paint(new_color)
+MyTruck.calulate_milleage(20, 400)
 p truck.vehicle_type
