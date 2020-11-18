@@ -31,6 +31,14 @@ class MyCar
     self.color = color
     puts "The new paint on the car is #{self.color}"
   end
+
+  def self.calulate_milleage(gallons, miles)
+    puts "Total Mileage: #{miles/gallons} per gallon "
+  end
+
+  def to_s
+    "Thank you for testing MyCar!"
+  end
 end
 
 car = MyCar.new(2018, 'MAZDA 6', 'red')
@@ -42,7 +50,7 @@ puts car.color
 car.color = "black"
 puts car.color
 puts car.year
-puts "Enter the new colour"
-puts ">....."
-new_color = gets.chomp
+new_color = "blue"
 car.spray_paint(new_color)
+MyCar.calulate_milleage(13, 400)
+puts car
