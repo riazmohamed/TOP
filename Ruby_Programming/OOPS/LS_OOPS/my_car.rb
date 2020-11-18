@@ -1,11 +1,15 @@
 class Vehicle
   attr_accessor :color
   attr_reader :year
+
+  @@number_of_times_vehicle_initiated = 0
+
   def initialize(year, model, color)
     @speed = 0
     @year = year
     @color = color
     @model = model
+    @@number_of_times_vehicle_initiated += 1
   end
 
   def speed_up(number)
@@ -34,6 +38,10 @@ class Vehicle
 
   def self.calulate_milleage(gallons, miles)
     puts "Total Mileage: #{miles/gallons} per gallon "
+  end
+
+  def self.class_initiation_count
+    puts "This program has created #{@@number_of_times_vehicle_initiated} vehicles."
   end
 end
 
@@ -83,3 +91,5 @@ new_color = "Red"
 truck.spray_paint(new_color)
 MyTruck.calulate_milleage(20, 400)
 p truck.vehicle_type
+
+Vehicle.class_initiation_count
