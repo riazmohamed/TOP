@@ -1,4 +1,4 @@
-class MyCar
+class Vehicle
   attr_accessor :color
   attr_reader :year
   def initialize(year, model, color)
@@ -35,9 +35,21 @@ class MyCar
   def self.calulate_milleage(gallons, miles)
     puts "Total Mileage: #{miles/gallons} per gallon "
   end
+end
 
-  def to_s
-    "Thank you for testing MyCar!"
+class MyCar < Vehicle
+  VEHICLE_TYPE = "Car"
+
+  def vehicle_type
+    VEHICLE_TYPE
+  end
+end
+
+class MyTruck < Vehicle
+  VEHICLE_TYPE = "Truck"
+
+  def vehicle_type
+    VEHICLE_TYPE
   end
 end
 
@@ -53,4 +65,7 @@ puts car.year
 new_color = "blue"
 car.spray_paint(new_color)
 MyCar.calulate_milleage(13, 400)
-puts car
+p car.vehicle_type
+
+truck = MyTruck.new(2019, 'VW', 'white')
+p truck.vehicle_type
