@@ -67,8 +67,9 @@ new_color = "blue"
 car.spray_paint(new_color)
 MyCar.calulate_milleage(13, 400)
 p car.vehicle_type
-puts "---Truck details---"
 
+puts ""
+puts "---Truck details---"
 truck = MyTruck.new(2019, 'VW', 'white')
 truck.speed_up(70)
 truck.brake(50)
