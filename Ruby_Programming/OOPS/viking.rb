@@ -2,7 +2,7 @@ class Person
   MAX_HEALTH = 120
 
   def heal
-    self.health += 1 unless self.health + 1 > MAX_HEALTH
+    self.health += 1 unless health + 1 > MAX_HEALTH
   end
 end
 
@@ -29,7 +29,7 @@ class Viking < Person
 
   def take_damage(damage)
     self.health -= damage # not calling self or @ , ruby will initiate a new local variable
-    shout("OUCH!")
+    shout('OUCH!')
   end
 
   def shout(str)
@@ -37,7 +37,7 @@ class Viking < Person
   end
 
   def self.random_name
-    ["Erik", "Riaz", "Leif", "Lars"].sample
+    %w[Erik Riaz Leif Lars].sample
   end
 
   def self.silver_to_gold(silver_pieces)
@@ -52,14 +52,14 @@ class Viking < Person
 
   def heal
     2.times { super() }
-    puts "Ready for Battle!"
+    puts 'Ready for Battle!'
   end
 end
 
-oleg = Viking.new("Oleg", 100, 19, 8)
+oleg = Viking.new('Oleg', 100, 19, 8)
 
 p oleg.take_damage(3)
-p sten = Viking.create_warrior("Sten")
+p sten = Viking.create_warrior('Sten')
 p warrior1 = Viking.create_warrior(Viking.random_name)
 p oleg.heal
 p oleg.health

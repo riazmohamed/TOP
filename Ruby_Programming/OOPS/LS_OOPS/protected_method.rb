@@ -1,11 +1,12 @@
 class Animal
   def a_public_method
-    "Will this work? " + self.a_protected_method
+    'Will this work? ' + a_protected_method
   end
 
   protected
+
   def a_protected_method
-    "Yes I am protected!"
+    'Yes I am protected!'
   end
 end
 

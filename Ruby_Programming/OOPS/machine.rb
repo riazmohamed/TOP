@@ -19,8 +19,8 @@ class Machine
   end
 end
 
-my_machine = Machine.new("Riaz", 12345)
-your_machine = Machine.new("Zair", 431123)
-my_machine.created("groceries.txt")
-your_machine.created("to_do.txt")
+my_machine = Machine.new('Riaz', 12_345)
+your_machine = Machine.new('Zair', 431_123)
+my_machine.created('groceries.txt')
+your_machine.created('to_do.txt')
 puts "The list of users are: #{Machine.get_users}"

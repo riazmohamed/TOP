@@ -22,14 +22,14 @@ class GoodDog
   end
 
   def some_method
-    self.info
+    info
   end
 end
 
-sparky = GoodDog.new("Sparky", "12 inches", "45 lbs")
+sparky = GoodDog.new('Sparky', '12 inches', '45 lbs')
 puts sparky.info
 
-sparky.change_info("Spartacus", "24 inches", "45 lbs")
+sparky.change_info('Spartacus', '24 inches', '45 lbs')
 puts sparky.info
-sparky.change_info("Rock", "14 inches", "145 lbs")
+sparky.change_info('Rock', '14 inches', '145 lbs')
 puts sparky.some_method

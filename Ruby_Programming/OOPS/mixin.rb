@@ -1,6 +1,6 @@
 module Action
   def jump
-    @distance = rand(4) + 2
+    @distance = rand(2..5)
     puts "I jumped #{@distance} feet forward!"
   end
 end
@@ -21,8 +21,8 @@ class Cricket
   end
 end
 
-peter = Rabbit.new("Peter")
-jiminy = Cricket.new("Jiminy")
+peter = Rabbit.new('Peter')
+jiminy = Cricket.new('Jiminy')
 
 peter.jump
 p peter.name

@@ -9,7 +9,7 @@ class GoodDog
   end
 
   def public_disclosure
-    "#{self.name} in human years is #{human_years} years old."
+    "#{name} in human years is #{human_years} years old."
   end
 
   private
@@ -19,5 +19,5 @@ class GoodDog
   end
 end
 
-sparky = GoodDog.new("Sparky", 4)
+sparky = GoodDog.new('Sparky', 4)
 p sparky.public_disclosure

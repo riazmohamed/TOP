@@ -1,6 +1,6 @@
 class Computer
-  $manufacturer = "Mango Mama Inc"
-  @@files = {hello: "You are the man?"}
+  $manufacturer = 'Mango Mama Inc'
+  @@files = { hello: 'You are the man?' }
 
   def initialize(name, password)
     @current_user = name
@@ -11,16 +11,14 @@ class Computer
     @@files
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 
   def current_password
     @password
   end
 end
 
-hal = Computer.new("Riaz", 123445)
+hal = Computer.new('Riaz', 123_445)
 puts "Current User: #{hal.current_user}"
 puts "Current Password: #{hal.current_password}"
 puts "Manufacturer: #{$manufacturer}"

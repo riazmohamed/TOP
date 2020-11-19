@@ -15,5 +15,5 @@ end
 
 class Cat < Animal; end
 
-dog = GoodDog.new("sparky", "brown")
+dog = GoodDog.new('sparky', 'brown')
 p dog

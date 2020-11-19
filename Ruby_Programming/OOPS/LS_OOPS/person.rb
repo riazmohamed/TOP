@@ -5,6 +5,6 @@ class Person
   end
 end
 
-bob = Person.new("Steve")
-bob.name = "Bob"
+bob = Person.new('Steve')
+bob.name = 'Bob'
 p bob.name

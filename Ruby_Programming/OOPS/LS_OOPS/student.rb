@@ -8,7 +8,7 @@ class Student
   end
 
   def get_grade
-    self.grade
+    grade
   end
 
   def better_grade_than?(other_student)
@@ -17,12 +17,10 @@ class Student
 
   private
 
-  def grade
-    @grade
-  end
+  attr_reader :grade
 end
 
-joe = Student.new("Joe", 95)
-bob = Student.new("Bob", 80)
+joe = Student.new('Joe', 95)
+bob = Student.new('Bob', 80)
 
-puts "Well Done!" if joe.better_grade_than?(bob)
+puts 'Well Done!' if joe.better_grade_than?(bob)

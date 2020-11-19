@@ -14,7 +14,7 @@ class GoodDog
   end
 
   def info
-    "#{self.name} weighs #{self.weight} and is #{self.height} tall."
+    "#{name} weighs #{weight} and is #{height} tall."
   end
 
   def what_is_self
@@ -23,10 +23,10 @@ class GoodDog
   puts self
 end
 
-dog1 = GoodDog.new("Sparky", "12 inches", "40 lbs")
+dog1 = GoodDog.new('Sparky', '12 inches', '40 lbs')
 puts dog1.info
 
-dog1.change_info("Ruby", "12 inches", "30 lbs")
+dog1.change_info('Ruby', '12 inches', '30 lbs')
 puts dog1.info
 puts dog1.what_is_self
 

@@ -11,9 +11,9 @@ class Language
   end
 end
 
-ruby = Language.new("Ruby", "Some dude")
-python = Language.new("Python", "Another dude")
-javascript = Language.new("Javascript", "Some nerd")
+ruby = Language.new('Ruby', 'Some dude')
+python = Language.new('Python', 'Another dude')
+javascript = Language.new('Javascript', 'Some nerd')
 
 ruby.description
 python.description

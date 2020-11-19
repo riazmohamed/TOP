@@ -11,8 +11,8 @@ class Person
   end
 end
 
-matz = Person.new("Yukihiro")
-dhh = Person.new("David")
-ranm = Person.new("Riaz")
+matz = Person.new('Yukihiro')
+dhh = Person.new('David')
+ranm = Person.new('Riaz')
 
 puts "The total number of people = #{Person.people_count}"

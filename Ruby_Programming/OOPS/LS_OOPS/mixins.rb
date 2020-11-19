@@ -5,7 +5,6 @@ module Swimmable
 end
 
 class Animal
-
 end
 
 class Fish < Animal
@@ -13,7 +12,6 @@ class Fish < Animal
 end
 
 class Mammal < Animal
-
 end
 
 class Cat < Animal

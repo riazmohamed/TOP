@@ -40,7 +40,7 @@ class Vehicle
   end
 
   def self.calulate_milleage(gallons, miles)
-    puts "Total Mileage: #{miles/gallons} per gallon "
+    puts "Total Mileage: #{miles / gallons} per gallon "
   end
 
   def self.class_initiation_count
@@ -48,17 +48,18 @@ class Vehicle
   end
 
   def how_old
-    "The vehicle is #{self.age} years old."
+    "The vehicle is #{age} years old."
   end
 
   private
+
   def age
-    @age_difference = Time.now.year - self.year
+    @age_difference = Time.now.year - year
   end
 end
 
 class MyCar < Vehicle
-  VEHICLE_TYPE = "Car"
+  VEHICLE_TYPE = 'Car'.freeze
 
   def vehicle_type
     VEHICLE_TYPE
@@ -71,7 +72,7 @@ class MyCar < Vehicle
 end
 
 class MyTruck < Vehicle
-  VEHICLE_TYPE = "Truck"
+  VEHICLE_TYPE = 'Truck'.freeze
 
   def vehicle_type
     VEHICLE_TYPE
@@ -81,48 +82,47 @@ class MyTruck < Vehicle
     @speed = 0
     turn_off(VEHICLE_TYPE)
   end
-
 end
 
-puts "---Car details---"
+puts '---Car details---'
 car = MyCar.new(2018, 'MAZDA 6', 'red')
 car.speed_up(70)
 car.brake(50)
 car.current_speed
 puts car.shut_off
 puts car.color
-car.color = "black"
+car.color = 'black'
 puts car.color
 puts car.year
-new_color = "blue"
+new_color = 'blue'
 car.spray_paint(new_color)
 MyCar.calulate_milleage(13, 400)
 p car.vehicle_type
 puts car.how_old
 
-puts ""
-puts "---Truck details---"
+puts ''
+puts '---Truck details---'
 truck = MyTruck.new(2019, 'VW', 'white')
 truck.speed_up(70)
 truck.brake(50)
 truck.current_speed
 puts truck.shut_off
 puts truck.color
-truck.color = "black"
+truck.color = 'black'
 puts truck.color
 puts truck.year
-new_color = "Red"
+new_color = 'Red'
 truck.spray_paint(new_color)
 MyTruck.calulate_milleage(20, 400)
 p truck.vehicle_type
 
 Vehicle.class_initiation_count
-puts ""
-puts "Car Method Look Up Path"
-puts ""
+puts ''
+puts 'Car Method Look Up Path'
+puts ''
 puts MyCar.ancestors
-puts ""
-puts "Truck Method Look Up Path"
-puts ""
+puts ''
+puts 'Truck Method Look Up Path'
+puts ''
 puts MyTruck.ancestors
 puts truck.how_old

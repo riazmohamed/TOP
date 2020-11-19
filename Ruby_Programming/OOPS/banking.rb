@@ -19,16 +19,17 @@ class Account
   end
 
   def pin_error
-    "Access denied: incorrect pin"
+    'Access denied: incorrect pin'
   end
 
   private
+
   def pin
     @pin = 1234
   end
 end
 
-my_account = Account.new("Riaz", 1000000)
+my_account = Account.new('Riaz', 1_000_000)
 my_account.display_balance(11)
-my_account.withdraw(1234, 500000)
+my_account.withdraw(1234, 500_000)
 my_account.display_balance(1234)
