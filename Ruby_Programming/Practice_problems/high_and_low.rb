@@ -6,11 +6,16 @@ def high_and_low(numbers)
 end
 
 # attempt 2
-# def high_and_low(numbers)
-#   numbers.split.map(&:to_i).minmax.reverse.join(' ')
-# end
+def high_and_low1(numbers)
+  numbers.split.map(&:to_i).minmax.reverse.join(' ')
+end
 
 # return the highest and the lowest number as follows.
+puts "> ..... Attempt 1 ........< "
 p high_and_low("1 2 3 4 5")  # return "5 1"
 p high_and_low("1 2 -3 4 5") # return "5 -3"
 p high_and_low("1 9 3 4 -5") # return "9 -5"
+puts "> ..... Attempt 2 ........< "
+p high_and_low1("1 2 3 4 5")  # return "5 1"
+p high_and_low1("1 2 -3 4 5") # return "5 -3"
+p high_and_low1("1 9 3 4 -5") # return "9 -5"
