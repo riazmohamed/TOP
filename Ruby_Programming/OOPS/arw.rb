@@ -1,6 +1,5 @@
 class Car
-  attr_reader :name, :price
-  attr_writer :name, :price
+  attr_accessor :title, :pages
 
   def someth
     "#{name}: #{price}"
