@@ -13,6 +13,6 @@ class Circle
   end
 end
 
-p Circle.info
+p Circle.info # method is called on the class name
 c = Circle.new(3)
 p c.area
