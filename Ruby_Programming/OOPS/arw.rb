@@ -2,11 +2,6 @@ class Car
   # attr_reader :name, :price
   # attr_writer :name, :price
 
-  def initialize
-    @name
-    @price
-  end
-
   def name=(name)
     @name = name
   end
