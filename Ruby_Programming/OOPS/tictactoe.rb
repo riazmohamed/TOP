@@ -36,6 +36,22 @@ def prompt_user(player_name, symbol, available_positions)
   user_input
 end
 
+def check_winner(user_input_number)
+  count = 0
+  arr = []
+  WINNING_LINES.each do |win|
+    count = 0
+    win.each do |num|
+      if user_input_number.include?(num)
+        count += 1
+        arr = win if count == 3
+      end
+    end
+    arr
+  end
+  arr
+end
+
 display_board(board_layout)
 
 input_A = []
@@ -45,8 +61,14 @@ loop do
   player_sign = 'X'
   current_player = "Player A"
   marker = prompt_user(current_player, player_sign, available_positions)
-  input_A << marker
   board_layout[marker - 1] = player_sign
+  input_A << marker
+  # winning condition
+  if input_A.length >= 3
+    puts "Player A wins!!!" if !!check_winner(input_A)
+    break
+  end
+
   available_positions.delete(marker)
   display_board(board_layout)
   break if available_positions.empty?
@@ -68,3 +90,4 @@ p input_B
 
 # =========== TODO ===========
 # capture the game play sequence ie The user_input into an array
+# Add logic to check the winning condition
