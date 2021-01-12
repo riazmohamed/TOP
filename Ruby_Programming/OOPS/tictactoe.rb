@@ -70,8 +70,11 @@ loop do
   end
 
   available_positions.delete(marker)
+  if available_positions.empty?
+    puts "It is a DRAW!!!"
+    break
+  end
   display_board(board_layout)
-  break if available_positions.empty?
 
   #PLAYER B SELECTION
   player_sign = 'O'
@@ -86,11 +89,11 @@ loop do
   end
 
   available_positions.delete(marker)
-  display_board(board_layout)
   if available_positions.empty?
     puts "It is a DRAW!!!"
     break
   end
+  display_board(board_layout)
 end
 
 display_board(board_layout)
