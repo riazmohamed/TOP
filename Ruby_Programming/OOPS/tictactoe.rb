@@ -1,4 +1,8 @@
 # display board and
+# created player A and B
+# refractored prompt for user input
+#
+
 puts "Player A your sign is 'X'"
 puts "Player B your sign is 'O'"
 
@@ -15,23 +19,34 @@ def display_board(board)
   puts ""
 end
 
-display_board(board_layout)
+def prompt_user(player_name, symbol, available_positions)
+  user_input = ""
+  puts "#{player_name}: Select your #{symbol} position:"
+  loop do
+    puts "Please choose a value from #{available_positions}"
+    user_input = gets.chomp.to_i
+    break if available_positions.include?(user_input)
+    puts "Invalid option!!! Select an Integer from #{available_positions}"
+  end
+  user_input
+end
 
+display_board(board_layout)
 loop do
   #PLAYER A SELECTION
-  puts "Player A: Select your X position:"
-  puts "Please choose a value from #{available_positions}"
-  marker = gets.chomp.to_i
-  board_layout[marker - 1] = "X"
+  player_sign = 'X'
+  current_player = "Player A"
+  marker = prompt_user(current_player, player_sign, available_positions)
+  board_layout[marker - 1] = player_sign
   available_positions.delete(marker)
   display_board(board_layout)
   break if available_positions.empty?
 
   #PLAYER B SELECTION
-  puts "Player B: Select your O position:"
-  puts "Please choose a value from #{available_positions}"
-  marker = gets.chomp.to_i
-  board_layout[marker - 1] = "O"
+  player_sign = 'O'
+  current_player = "Player B"
+  marker = prompt_user(current_player, player_sign, available_positions)
+  board_layout[marker - 1] = player_sign
   available_positions.delete(marker)
   display_board(board_layout)
   break if available_positions.empty?
