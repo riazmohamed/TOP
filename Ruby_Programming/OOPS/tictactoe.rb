@@ -1,7 +1,12 @@
 # display board and
 # created player A and B
-# refractored prompt for user input
-#
+# refractored prompt for user input with raise error function
+# Add WINNING_LINES (winning sequence)
+
+# Any match to the following will declare the winner
+WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                [[1, 5, 9], [3, 5, 7]]              # diagonals
 
 puts "Player A your sign is 'X'"
 puts "Player B your sign is 'O'"
@@ -32,11 +37,15 @@ def prompt_user(player_name, symbol, available_positions)
 end
 
 display_board(board_layout)
+
+input_A = []
+input_B = []
 loop do
   #PLAYER A SELECTION
   player_sign = 'X'
   current_player = "Player A"
   marker = prompt_user(current_player, player_sign, available_positions)
+  input_A << marker
   board_layout[marker - 1] = player_sign
   available_positions.delete(marker)
   display_board(board_layout)
@@ -46,6 +55,7 @@ loop do
   player_sign = 'O'
   current_player = "Player B"
   marker = prompt_user(current_player, player_sign, available_positions)
+  input_B << marker
   board_layout[marker - 1] = player_sign
   available_positions.delete(marker)
   display_board(board_layout)
@@ -53,8 +63,8 @@ loop do
 end
 
 display_board(board_layout)
+p input_A
+p input_B
 
-# TODO
-# ====== Start refractoring the values ======
-# create a method to prompt the user to enter tthe values
-# create edge cases for selection of values (ie Integer 0..9 true/false)
+# =========== TODO ===========
+# capture the game play sequence ie The user_input into an array
