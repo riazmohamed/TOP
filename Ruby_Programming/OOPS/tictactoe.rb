@@ -1,9 +1,5 @@
-# display board and
-# created player A and B
-# refractored prompt for user input with raise error function
-# Add WINNING_LINES (winning sequence)
+#tictactoe.rb
 
-# Any match to the following will declare the winner
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
                 [[1, 5, 9], [3, 5, 7]]              # diagonals
@@ -97,9 +93,3 @@ loop do
 end
 
 display_board(board_layout)
-p input_A
-p input_B
-
-# =========== TODO ===========
-# capture the game play sequence ie The user_input into an array
-# Add logic to check the winning condition
