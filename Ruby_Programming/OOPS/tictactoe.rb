@@ -64,8 +64,8 @@ loop do
   board_layout[marker - 1] = player_sign
   input_A << marker
   # winning condition
-  if input_A.length >= 3
-    puts "Player A wins!!!" if !!check_winner(input_A)
+  if input_A.length > 2 && WINNING_LINES.include?(check_winner(input_A))
+    puts "Player A wins!!!"
     break
   end
 
@@ -79,9 +79,18 @@ loop do
   marker = prompt_user(current_player, player_sign, available_positions)
   input_B << marker
   board_layout[marker - 1] = player_sign
+  # winning condition
+  if input_B.length > 2 && WINNING_LINES.include?(check_winner(input_B))
+    puts "Player B wins!!!"
+    break
+  end
+
   available_positions.delete(marker)
   display_board(board_layout)
-  break if available_positions.empty?
+  if available_positions.empty?
+    puts "It is a DRAW!!!"
+    break
+  end
 end
 
 display_board(board_layout)
