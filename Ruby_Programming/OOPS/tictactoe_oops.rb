@@ -132,49 +132,49 @@ class Game
 
   def winning_condition(user_input_number)
     if user_input_number.length > 2 && WINNING_LINES.include?(check_winner(user_input_number))
-    "#{player.current_player} wins!!!"
+    "\v\t#{player.current_player} wins!!!\n"
     end
+  end
+
+  def player_turn(input_array)
+    input_array << get_user_input
+    show
   end
 
 end
 
 game = Game.new("Player A", "Player B", "X", "O")
 
-input_A = []
-input_B = []
+input_a = []
+input_b = []
 
 p game.start_game
 game.show
 p game.board.available_positions
 
-input_A << game.get_user_input
-p game.board.cell
-game.show
+game.player_turn(input_a)
 
 loop do
 
   game.player.swap_players
-  input_B << game.get_user_input
-  p game.board.cell
-  game.show
-
-  game.player.swap_players
-  input_A << game.get_user_input
-  p game.board.cell
-  game.show
-
-  p input_A, input_B
-  if game.winning_condition(input_A)
-    puts game.winning_condition(input_A)
-    break
-  elsif game.winning_condition(input_A)
-    puts game.winning_condition(input_A)
+  game.player_turn(input_b)
+  if game.winning_condition(input_b)
+    puts game.winning_condition(input_b)
     break
   end
 
-  # add draw conidition
+  game.player.swap_players
+  game.player_turn(input_a)
+  if game.winning_condition(input_a)
+    puts game.winning_condition(input_a)
+    break
+  end
+
+  if game.board.available_positions.empty?
+    puts "\v\tIt is a DRAW!!!\n\n"
+    break
+  end
 
 end
-
 
 game.show
