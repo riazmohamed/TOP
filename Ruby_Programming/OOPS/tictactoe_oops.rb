@@ -1,6 +1,11 @@
 #tictactoe.rb
 
 module Display
+
+  WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                  [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                  [[1, 5, 9], [3, 5, 7]]              # diagonals
+
   def play_intro
     puts "\nLet's play TICTACTOE !!!\n\n"
   end
@@ -24,10 +29,6 @@ module Display
 
   class Board
     attr_accessor :cell, :available_positions
-
-    WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
-                    [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
-                    [[1, 5, 9], [3, 5, 7]]              # diagonals
 
     def initialize
       @cell = [1, 2, 3, 4, 5, 6, 7, 8, 9] #update cell when the user inputs a valid option
@@ -97,7 +98,7 @@ class Game
     ask_player_position(player.current_player, player.current_symbol)
   end
 
-  def user_input
+  def get_user_input
     user_input = ""
     loop do
       ask_player
@@ -113,16 +114,67 @@ class Game
     user_input
   end
 
+  def check_winner(user_input_numbers)
+    count = 0
+    arr = []
+    WINNING_LINES.each do |win|
+      count = 0
+      win.each do |num|
+        if user_input_numbers.include?(num)
+          count += 1
+          arr = win if count == 3
+        end
+      end
+      arr
+    end
+    arr
+  end
+
+  def winning_condition(user_input_number)
+    if user_input_number.length > 2 && WINNING_LINES.include?(check_winner(user_input_number))
+    "#{player.current_player} wins!!!"
+    end
+  end
+
 end
 
 game = Game.new("Player A", "Player B", "X", "O")
+
+input_A = []
+input_B = []
+
 p game.start_game
 game.show
 p game.board.available_positions
-game.user_input
+
+input_A << game.get_user_input
 p game.board.cell
 game.show
-game.player.swap_players
-game.user_input
-p game.board.cell
+
+loop do
+
+  game.player.swap_players
+  input_B << game.get_user_input
+  p game.board.cell
+  game.show
+
+  game.player.swap_players
+  input_A << game.get_user_input
+  p game.board.cell
+  game.show
+
+  p input_A, input_B
+  if game.winning_condition(input_A)
+    puts game.winning_condition(input_A)
+    break
+  elsif game.winning_condition(input_A)
+    puts game.winning_condition(input_A)
+    break
+  end
+
+  # add draw conidition
+
+end
+
+
 game.show
