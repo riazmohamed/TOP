@@ -11,7 +11,7 @@ module Display
   end
 
   def user_input_warning
-    puts "Invalid option!!! Select an Integer from"
+    puts "\v\tInvalid option!!! Select an Integer from\n\n"
   end
 
   def ask_player_position(player_name, symbol)
@@ -97,22 +97,32 @@ class Game
     ask_player_position(player.current_player, player.current_symbol)
   end
 
+  def user_input
+    user_input = ""
+    loop do
+      ask_player
+      mark_position(board.available_positions)
+      user_input = gets.chomp.to_i
+      if board.available_positions.include?(user_input)
+        board.cell[user_input - 1] = player.current_symbol
+        break
+      else
+        user_input_warning
+      end
+    end
+    user_input
+  end
+
 end
 
 game = Game.new("Player A", "Player B", "X", "O")
 p game.start_game
 game.show
 p game.board.available_positions
-
-user_input = ""
-loop do
-  game.ask_player
-  game.mark_position(game.board.available_positions)
-  user_input = gets.chomp.to_i
-  if game.board.available_positions.include?(user_input)
-    game.board.cell[user_input - 1] = game.player.current_symbol
-    break
-  end
-end
+game.user_input
+p game.board.cell
+game.show
+game.player.swap_players
+game.user_input
 p game.board.cell
 game.show
