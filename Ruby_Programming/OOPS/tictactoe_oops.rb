@@ -144,7 +144,6 @@ class Game
 end
 
 game = Game.new("Player A", "Player B", "X", "O")
-
 input_a = []
 input_b = []
 
@@ -155,7 +154,6 @@ p game.board.available_positions
 game.player_turn(input_a)
 
 loop do
-
   game.player.swap_players
   game.player_turn(input_b)
   if game.winning_condition(input_b)
@@ -174,7 +172,6 @@ loop do
     puts "\v\tIt is a DRAW!!!\n\n"
     break
   end
-
 end
 
 game.show
