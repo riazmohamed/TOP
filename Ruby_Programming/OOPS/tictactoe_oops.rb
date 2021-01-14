@@ -14,6 +14,10 @@ module Display
     puts "Invalid option!!! Select an Integer from"
   end
 
+  def ask_player_position(player_name, symbol)
+    puts "#{player_name}: Select your #{symbol} position:"
+  end
+
   class Board
     attr_accessor :cell, :available_positions
 
@@ -22,7 +26,7 @@ module Display
                     [[1, 5, 9], [3, 5, 7]]              # diagonals
 
     def initialize
-      @cell = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      @cell = [1, 2, 3, 4, 5, 6, 7, 8, 9] #update cell when the user inputs a valid option
     end
 
     def available_positions
@@ -39,25 +43,18 @@ module Display
       puts ""
     end
 
-    # bring in available position
   end
 
   class Player
-    attr_accessor :play1, :play2, :current_player
+    attr_accessor :play1, :play2, :sym1, :sym2
 
-    def initialize(play1, play2)
+    def initialize(play1, play2, sym1, sym2)
       @play1 = play1
       @play2 = play2
-      @current_player = play1
+      @sym1 = sym1
+      @sym2 = sym2
     end
 
-    def swap_turn
-      if current_player == play1
-        current_player = @play2
-      elsif current_player == play2
-        current_player = @play1
-      end
-    end
   end
 end
 
@@ -65,9 +62,9 @@ class Game
   include Display
   attr_accessor :board, :player
 
-  def initialize(player1, player2)
+  def initialize(player1, player2, symbol1, symbol2)
     @board = Board.new
-    @player = Player.new(player1, player2)
+    @player = Player.new(player1, player2, symbol1, symbol2)
   end
 
   def start_game
@@ -75,14 +72,19 @@ class Game
     display_players
     board.display_cell
   end
+
+  def ask_player_a
+    ask_player_position(player.play1, player.sym1)
+  end
+
+  def ask_player_b
+    ask_player_position(player.play2, player.sym2)
+  end
+
 end
 
-game = Game.new("Player A", "Player B")
+game = Game.new("Player A", "Player B", "X", "O")
 p game.start_game
 p game.board.available_positions
-p game.player.current_player
-p game.player.swap_turn
-p game.player.current_player
-p game.board.available_positions
-p game.player.swap_turn
-p game.player.current_player
+p game.ask_player_a
+p game.ask_player_b
