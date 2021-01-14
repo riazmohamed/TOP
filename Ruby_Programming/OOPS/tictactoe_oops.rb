@@ -77,10 +77,6 @@ class Game
   end
 end
 
-def find_player(play1, play2)
-  swap_turn
-end
-
 game = Game.new("Player A", "Player B")
 p game.start_game
 p game.board.available_positions
