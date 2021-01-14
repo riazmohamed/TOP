@@ -46,13 +46,26 @@ module Display
   end
 
   class Player
-    attr_accessor :play1, :play2, :sym1, :sym2
+    attr_accessor :play1, :play2, :sym1, :sym2,
+                  :current_player, :current_symbol
 
     def initialize(play1, play2, sym1, sym2)
       @play1 = play1
       @play2 = play2
       @sym1 = sym1
       @sym2 = sym2
+      @current_player = play1
+      @current_symbol = sym1
+    end
+
+    def swap_players
+      if current_player == play1
+        self.current_player = play2
+        self.current_symbol = sym2
+      elsif current_player == play2
+        self.current_player = play1
+        self.current_symbol = sym1
+      end
     end
 
   end
@@ -73,12 +86,8 @@ class Game
     board.display_cell
   end
 
-  def ask_player_a
-    ask_player_position(player.play1, player.sym1)
-  end
-
-  def ask_player_b
-    ask_player_position(player.play2, player.sym2)
+  def ask_player
+    ask_player_position(player.current_player, player.current_symbol)
   end
 
 end
@@ -86,5 +95,6 @@ end
 game = Game.new("Player A", "Player B", "X", "O")
 p game.start_game
 p game.board.available_positions
-p game.ask_player_a
-p game.ask_player_b
+p game.ask_player
+game.player.swap_players
+p game.ask_player
