@@ -18,6 +18,10 @@ module Display
     puts "#{player_name}: Select your #{symbol} position:"
   end
 
+  def mark_position(position)
+    puts "Please choose a value from #{position}"
+  end
+
   class Board
     attr_accessor :cell, :available_positions
 
@@ -67,7 +71,7 @@ module Display
         self.current_symbol = sym1
       end
     end
-
+     # without adding self keyword ruby seems to create a new local variable within the above method
   end
 end
 
@@ -83,6 +87,9 @@ class Game
   def start_game
     play_intro
     display_players
+  end
+
+  def show
     board.display_cell
   end
 
@@ -94,7 +101,18 @@ end
 
 game = Game.new("Player A", "Player B", "X", "O")
 p game.start_game
+game.show
 p game.board.available_positions
-p game.ask_player
-game.player.swap_players
-p game.ask_player
+
+user_input = ""
+loop do
+  game.ask_player
+  game.mark_position(game.board.available_positions)
+  user_input = gets.chomp.to_i
+  if game.board.available_positions.include?(user_input)
+    game.board.cell[user_input - 1] = game.player.current_symbol
+    break
+  end
+end
+p game.board.cell
+game.show
