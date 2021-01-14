@@ -8,7 +8,7 @@ puts "Player A your sign is 'X'"
 puts "Player B your sign is 'O'"
 
 board_layout = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-available_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+available_positions = board_layout.select { |num| num.to_i != 0 }
 
 def display_board(board)
   puts ""
