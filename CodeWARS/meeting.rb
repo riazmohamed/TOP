@@ -59,3 +59,6 @@ def meeting3(s)
   s.upcase.gsub(/(\w+):(\w+)/) { "(#{$2}, #{$1})" }.split(";").sort.join
 end
 p meeting3(s)
+
+# s.upcase.gsub(/(\w+):(\w+);?/, '(\2, \1)').split(";").sort.join
+# can also be written as the above notice the use of single quotes as using the double quotes can lead to 'leaning toothpick problem'
