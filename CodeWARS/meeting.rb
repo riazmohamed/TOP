@@ -43,8 +43,19 @@ def meeting1(s)
 end
 
 meeting1(s)
+
 # option 2
 puts "\v\t================= OPTION 2 ================="
+def meeting2(s)
+    s.upcase.scan(/(\w+):(\w+);?/)
+     .map { |first, last| "(#{last}, #{first})"}
+     .sort.join
+end
+p meeting2(s)
 
 # option 3
 puts "\v\t================= OPTION 3 ================="
+def meeting3(s)
+  s.upcase.gsub(/(\w+):(\w+)/) { "(#{$2}, #{$1})" }.split(";").sort.join
+end
+p meeting3(s)
