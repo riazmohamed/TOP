@@ -29,3 +29,12 @@ end
 
 p stray2([1, 1, 2])
 p stray2([17, 17, 3, 17, 17, 17, 17])
+
+# Option 3
+puts "=========== OPTION 3 ============="
+def stray3(numbers)
+  numbers.each { |num| return num if numbers.count(num) == 1 }
+end
+
+p stray3([1, 1, 2])
+p stray3([17, 17, 3, 17, 17, 17, 17])
