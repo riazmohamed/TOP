@@ -9,6 +9,7 @@
 def remove_url_anchor(url)
   url.gsub(/(\S+)#(\S+)?/) { $1 }
 end
+# can also be written as url.gsub(/(\S+)#(\S+)?/, '\1')
 
 p remove_url_anchor('www.codewars.com#about')
 p remove_url_anchor('www.codewars.com?page=1')
