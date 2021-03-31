@@ -41,3 +41,12 @@ end
 two_sum([1, 2, 3], 4)
 two_sum([1234, 5678, 9012], 14690)
 two_sum([2, 2, 3], 4)
+
+=begin
+best answer was
+
+def two_sum(numbers, target)
+  numbers.combination(2).find { |a, b| a + b == target }
+end
+
+=end
