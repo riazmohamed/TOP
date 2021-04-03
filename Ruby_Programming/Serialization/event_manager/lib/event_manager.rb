@@ -30,13 +30,22 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
+# the following are the conditions for a clean phone number
+  # if the number length is less than 10 then the number is a bad number
+  # number.length == 10 then a good number
+  # number.length == 11 and the first num == '1' then select last 10 num
+
+  # number.length > 10 and the first num != '1' then bad number
+
+
+
 def clean_phone_number(number)
   phone_number = number
   phone_number.gsub!(/[^\d]/, "")
   phone_number = "Invalid Number!" if phone_number.length < 10
-  if phone_number.length > 10
-    if phone_number[0] == '1'
-      phone_number = phone_number[0...10]
+  if phone_number.length >= 11
+    if phone_number[0] == '1' && phone_number.length == 11
+      phone_number = phone_number[1..10]
     else
       phone_number = "Invalid Number!"
     end
