@@ -30,6 +30,20 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
+def clean_phone_number(number)
+  phone_number = number
+  phone_number.gsub!(/[^\d]/, "")
+  phone_number = "Invalid Number!" if phone_number.length < 10
+  if phone_number.length > 10
+    if phone_number[0] == '1'
+      phone_number = phone_number[0...10]
+    else
+      phone_number = "Invalid Number!"
+    end
+  end
+  phone_number
+end
+
 puts "Event Manager Initialized!"
 
 contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
@@ -47,4 +61,7 @@ contents.each do |row|
   form_letter = erb_template.result(binding)
 
   save_thank_you_letter(id, form_letter)
+
+  phone_number = clean_phone_number(row[:homephone])
+  puts "Name:#{name} homephone: #{phone_number}"
 end
