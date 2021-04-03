@@ -1,0 +1,57 @@
+Name:Allison
+homephone: 6154385000
+
+Name:SArah
+homephone: 4145205000
+
+Name:Sarah
+homephone: 9419792000
+
+Name:David
+homephone: 6507990000
+
+Name:Chris
+homephone: 6135654000
+
+Name:Aya
+homephone: 7782327000
+
+Name:Mary Kate
+homephone: 2023281000
+
+Name:Audrey
+homephone: 5309193000
+
+Name:Shiyu
+homephone: 8084974000
+
+Name:Eli
+homephone: 8584053000
+
+Name:Colin
+homephone: 4018685000
+
+Name:Megan
+homephone: 3154506000
+
+Name:Meggie
+homephone: 5102824000
+
+Name:Laura
+homephone: 7872950000
+
+Name:Paul
+homephone: Invalid Number!
+
+Name:Shannon
+homephone: 6033053000
+
+Name:Shannon
+homephone: 5303557000
+
+Name:Nash
+homephone: 2062263000
+
+Name:Amanda
+homephone: 6072802000
+

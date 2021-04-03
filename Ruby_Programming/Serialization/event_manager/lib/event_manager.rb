@@ -72,5 +72,6 @@ contents.each do |row|
   save_thank_you_letter(id, form_letter)
 
   phone_number = clean_phone_number(row[:homephone])
-  puts "Name:#{name} homephone: #{phone_number}"
+  #storing files in a seperate list "attendance list"
+  File.open('attendance_list.txt', 'a') { |list| list.puts "Name:#{name}\nhomephone: #{phone_number}\n\n" }
 end
