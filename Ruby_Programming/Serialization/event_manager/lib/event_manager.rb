@@ -1,6 +1,8 @@
 require 'csv'
 require 'google/apis/civicinfo_v2'
 require 'erb'
+require 'time'
+require 'date'
 
 def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5, '0')[0..4]
@@ -73,5 +75,11 @@ contents.each do |row|
 
   phone_number = clean_phone_number(row[:homephone])
   #storing files in a seperate list "attendance list"
-  File.open('attendance_list.txt', 'a') { |list| list.puts "Name:#{name}\nhomephone: #{phone_number}\n\n" }
+  # File.open('attendance_list.txt', 'a') { |list| list.puts "Name:#{name}\nhomephone: #{phone_number}\n\n" }
+
+  # Assignment: Time Targeting
+  # Find out which hours of the day most people registered
+  time = Time.strptime(row[:regdate], "%m/%d/%y %k:%M")
+  # p time.strftime("%I:%M %P")
+  puts "#{row[:regdate]} #{name}: #{time.strftime("%I:%M %P")}"
 end
