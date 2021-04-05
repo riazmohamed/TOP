@@ -62,6 +62,9 @@ contents = CSV.open('event_attendees.csv', headers: true, header_converters: :sy
 template_letter = File.read('form_letter.erb')
 erb_template = ERB.new(template_letter)
 
+am_registry = []
+pm_registry = []
+
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
@@ -81,5 +84,24 @@ contents.each do |row|
   # Find out which hours of the day most people registered
   time = Time.strptime(row[:regdate], "%m/%d/%y %k:%M")
   # p time.strftime("%I:%M %P")
-  puts "#{row[:regdate]} #{name}: #{time.strftime("%I:%M %P")}"
+  registered = time.strftime("%I:%M %P")
+  puts "#{name} registered at: #{registered}"
+
+
+  pm_registry << time.strftime("%I:%M") if time.strftime("%P") == 'pm'
+  am_registry << time.strftime("%I:%M") if time.strftime("%P") == 'am'
+
 end
+
+p am_registry.sort
+p pm_registry.sort
+p "total AM registry: #{am_registry.size}"
+p "total PM registry: #{pm_registry.count}"
+
+=begin
+hours of the day targeting
+* find out which hours of the day most sign ups happened
+
+hours of the week targeting
+* find out which day of the week the most sign ups happened
+=end
