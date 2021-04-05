@@ -32,12 +32,6 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
-# the following are the conditions for a clean phone number
-  # if the number length is less than 10 then the number is a bad number
-  # number.length == 10 then a good number
-  # number.length == 11 and the first num == '1' then select last 10 num
-  # number.length > 10 and the first num != '1' then bad number
-
 def clean_phone_number(number)
   phone_number = number
   phone_number.gsub!(/[^\d]/, "")
@@ -67,7 +61,6 @@ am_registry = []
 pm_registry = []
 day_registry = {}
 
-
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
@@ -80,12 +73,7 @@ contents.each do |row|
   save_thank_you_letter(id, form_letter)
 
   phone_number = clean_phone_number(row[:homephone])
-  #storing files in a seperate list "attendance list"
-  # File.open('attendance_list.txt', 'a') { |list| list.puts "Name:#{name}\nhomephone: #{phone_number}\n\n" }
 
-  # Assignment: Time Targeting
-  # Find out which hours of the day most people registered
-  # time = Time.strptime(row[:regdate], "%m/%d/%y %k:%M")
   time = time_format(row[:regdate])
   registered = time.strftime("%I:%M %P")
   entry_day = time.strftime("%A")
@@ -108,12 +96,3 @@ max_day= day_registry.find {|k, v| v == max_value}.first
 
 puts "The highest number of people registered was #{max_value}"
 puts "'#{max_day.capitalize}' saw the highest number of registrations in a week."
-
-
-=begin
-hours of the day targeting
-* find out which hours of the day most sign ups happened
-
-hours of the week targeting
-* find out which day of the week the most sign ups happened
-=end
