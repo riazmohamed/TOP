@@ -36,10 +36,7 @@ end
   # if the number length is less than 10 then the number is a bad number
   # number.length == 10 then a good number
   # number.length == 11 and the first num == '1' then select last 10 num
-
   # number.length > 10 and the first num != '1' then bad number
-
-
 
 def clean_phone_number(number)
   phone_number = number
@@ -55,6 +52,10 @@ def clean_phone_number(number)
   phone_number
 end
 
+def time_format(date)
+  Time.strptime(date, "%m/%d/%y %k:%M")
+end
+
 puts "Event Manager Initialized!"
 
 contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
@@ -64,6 +65,8 @@ erb_template = ERB.new(template_letter)
 
 am_registry = []
 pm_registry = []
+day_registry = {}
+
 
 contents.each do |row|
   id = row[0]
@@ -82,21 +85,30 @@ contents.each do |row|
 
   # Assignment: Time Targeting
   # Find out which hours of the day most people registered
-  time = Time.strptime(row[:regdate], "%m/%d/%y %k:%M")
-  # p time.strftime("%I:%M %P")
+  # time = Time.strptime(row[:regdate], "%m/%d/%y %k:%M")
+  time = time_format(row[:regdate])
   registered = time.strftime("%I:%M %P")
-  puts "#{name} registered at: #{registered}"
-
+  entry_day = time.strftime("%A")
+  puts "#{name} registered at: #{registered} on #{entry_day}"
 
   pm_registry << time.strftime("%I:%M") if time.strftime("%P") == 'pm'
   am_registry << time.strftime("%I:%M") if time.strftime("%P") == 'am'
 
+  if day_registry.has_key?(entry_day)
+    day_registry[entry_day] += 1
+  else
+    day_registry[entry_day] = 1
+  end
 end
 
-p am_registry.sort
-p pm_registry.sort
-p "total AM registry: #{am_registry.size}"
-p "total PM registry: #{pm_registry.count}"
+p "entries before 12pm: #{am_registry.count}"
+p "entries after 12pm: #{pm_registry.count}"
+max_value = day_registry.values.max
+max_day= day_registry.find {|k, v| v == max_value}.first
+
+puts "The highest number of people registered was #{max_value}"
+puts "'#{max_day.capitalize}' saw the highest number of registrations in a week."
+
 
 =begin
 hours of the day targeting
